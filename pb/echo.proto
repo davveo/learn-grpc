@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+message Request {
+    string message = 1;
+}
+
+message Response{
+    string message = 1;
+}
+
+service Echo {
+    // 简单模式
+    rpc Simple(Request) returns(Response) {}
+    // 客户端流模式
+    rpc ClientStream(stream Request) returns(Response) {}
+    // 服务端流模式
+    rpc ServerStream(Request) returns(stream Response) {}
+    // 双向流模式
+    rpc DoubleStream(stream Request) returns(stream Response) {}
+}
