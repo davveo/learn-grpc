@@ -30,4 +30,4 @@
 > To turn on the logs for debugging, run the code with the following environment variable: 
   `GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info`.
 >  Channelz方式: https://grpc.io/blog/a-short-introduction-to-channelz/
->
+### 14. name_resolving 域名反解
