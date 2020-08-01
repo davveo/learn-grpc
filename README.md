@@ -22,3 +22,5 @@
 ### 8. loadbalance 负载均衡
 ### 9. multiplex 多路复用
 ### 10. client retry 客户端重试
+### 11. errors 错误处理
+### 12. deadline 超时机制
