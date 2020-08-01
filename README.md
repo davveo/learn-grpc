@@ -24,3 +24,10 @@
 ### 10. client retry 客户端重试
 ### 11. errors 错误处理
 ### 12. deadline 超时机制
+### 13. debugging 调试
+> 目前grpc提供两种调试方式, 1.日志 2.Channelz
+> 日志方式: https://github.com/grpc/grpc-go/blob/master/Documentation/log_levels.md
+> To turn on the logs for debugging, run the code with the following environment variable: 
+  `GRPC_GO_LOG_VERBOSITY_LEVEL=99 GRPC_GO_LOG_SEVERITY_LEVEL=info`.
+>  Channelz方式: https://grpc.io/blog/a-short-introduction-to-channelz/
+>
