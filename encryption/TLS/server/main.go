@@ -7,7 +7,7 @@ import (
 	"log"
 	"net"
 
-	echo "github.com/davveo/learn-grpc/pb"
+	"github.com/davveo/learn-grpc/proto/echo"
 	"github.com/davveo/learn-grpc/testdata"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"

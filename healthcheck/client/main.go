@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/davveo/learn-grpc/pb"
+	"github.com/davveo/learn-grpc/proto/echo"
 	"google.golang.org/grpc"
 	_ "google.golang.org/grpc/health"
 	"google.golang.org/grpc/resolver"
@@ -21,10 +21,10 @@ var serviceConfig = `{
 	}
 }`
 
-func callSimple(c pb.EchoClient) {
+func callSimple(c echo.EchoClient) {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := c.Simple(ctx, &pb.Request{})
+	r, err := c.Simple(ctx, &echo.Request{})
 	if err != nil {
 		fmt.Println("Simple: _, ", err)
 	} else {
@@ -58,7 +58,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	echoClient := pb.NewEchoClient(conn)
+	echoClient := echo.NewEchoClient(conn)
 
 	for {
 		callSimple(echoClient)

@@ -4,7 +4,8 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	echo "github.com/davveo/learn-grpc/pb"
+
+	"github.com/davveo/learn-grpc/proto/echo"
 	"github.com/davveo/learn-grpc/utils"
 	"google.golang.org/grpc"
 )
@@ -21,7 +22,7 @@ func callSimpleEcho(client echo.EchoClient, message string) {
 	fmt.Println("simple echo: ", resp.Message)
 }
 
-func main()  {
+func main() {
 	flag.Parse()
 
 	conn, err := grpc.Dial(*addr, grpc.WithInsecure())

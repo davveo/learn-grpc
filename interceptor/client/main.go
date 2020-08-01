@@ -8,7 +8,7 @@ import (
 	"log"
 	"time"
 
-	echo "github.com/davveo/learn-grpc/pb"
+	"github.com/davveo/learn-grpc/proto/echo"
 
 	"golang.org/x/oauth2"
 	"google.golang.org/grpc"

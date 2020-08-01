@@ -4,16 +4,17 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	echo "github.com/davveo/learn-grpc/pb"
-	"github.com/davveo/learn-grpc/utils"
-	"google.golang.org/grpc"
 	"io"
 	"log"
+
+	"github.com/davveo/learn-grpc/proto/echo"
+	"github.com/davveo/learn-grpc/utils"
+	"google.golang.org/grpc"
 )
 
 var (
-	addr = flag.String("addr", "localhost:50051", "the address to connect to")
-	streamingCount  = 10
+	addr           = flag.String("addr", "localhost:50051", "the address to connect to")
+	streamingCount = 10
 )
 
 func doubleStream(c echo.EchoClient, message string) {
@@ -24,7 +25,7 @@ func doubleStream(c echo.EchoClient, message string) {
 	}
 
 	go func() {
-		for i:=0; i<streamingCount; i++ {
+		for i := 0; i < streamingCount; i++ {
 			if err := stream.Send(&echo.Request{Message: message}); err != nil {
 				log.Fatalf("failed to send streaming: %v\n", err)
 			}
@@ -47,7 +48,7 @@ func doubleStream(c echo.EchoClient, message string) {
 	}
 }
 
-func main()  {
+func main() {
 	flag.Parse()
 
 	conn, err := grpc.Dial(*addr, grpc.WithInsecure())

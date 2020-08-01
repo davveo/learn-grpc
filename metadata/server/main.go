@@ -4,15 +4,16 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	"github.com/davveo/learn-grpc/pb"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/metadata"
-	"google.golang.org/grpc/status"
 	"log"
 	"math/rand"
 	"net"
 	"time"
+
+	"github.com/davveo/learn-grpc/proto/echo"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/status"
 )
 
 var port = flag.Int("port", 50051, "the port to serve on")
@@ -53,7 +54,6 @@ func (s *server) Simple(ctx context.Context, in *echo.Request) (*echo.Response, 
 
 }
 
-
 func (s *server) ClientStream(echo.Echo_ClientStreamServer) error {
 	return nil
 
@@ -64,10 +64,6 @@ func (s *server) ServerStream(*echo.Request, echo.Echo_ServerStreamServer) error
 func (s *server) DoubleStream(echo.Echo_DoubleStreamServer) error {
 	return nil
 }
-
-
-
-
 
 func main() {
 	flag.Parse()

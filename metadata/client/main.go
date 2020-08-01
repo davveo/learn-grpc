@@ -4,11 +4,12 @@ import (
 	"context"
 	"flag"
 	"fmt"
-	echo "github.com/davveo/learn-grpc/pb"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/metadata"
 	"log"
 	"time"
+
+	"github.com/davveo/learn-grpc/proto/echo"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/metadata"
 )
 
 var addr = flag.String("addr", "localhost:50051", "the address to connect to")
@@ -16,7 +17,7 @@ var addr = flag.String("addr", "localhost:50051", "the address to connect to")
 const (
 	timestampFormat = time.StampNano // "Jan _2 15:04:05.000"
 	streamingCount  = 10
-	message = "metadata test"
+	message         = "metadata test"
 )
 
 func simpleCallWithMetadata(c echo.EchoClient, message string) {
@@ -64,7 +65,7 @@ func simpleCallWithMetadata(c echo.EchoClient, message string) {
 	}
 }
 
-func main()  {
+func main() {
 	flag.Parse()
 	conn, err := grpc.Dial(*addr, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {

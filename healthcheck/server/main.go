@@ -8,7 +8,7 @@ import (
 	"net"
 	"time"
 
-	pb "github.com/davveo/learn-grpc/pb"
+	"github.com/davveo/learn-grpc/proto/echo"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
@@ -22,16 +22,16 @@ var (
 )
 
 type echoServer struct {
-	pb.UnimplementedEchoServer
+	echo.UnimplementedEchoServer
 }
 
-func (e *echoServer) Simple(ctx context.Context, req *pb.Request) (*pb.Response, error) {
-	return &pb.Response{
+func (e *echoServer) Simple(ctx context.Context, req *echo.Request) (*echo.Response, error) {
+	return &echo.Response{
 		Message: fmt.Sprintf("hello from localhost:%d", *port),
 	}, nil
 }
 
-var _ pb.EchoServer = &echoServer{}
+var _ echo.EchoServer = &echoServer{}
 
 func main() {
 	flag.Parse()
@@ -44,7 +44,7 @@ func main() {
 	s := grpc.NewServer()
 	healthcheck := health.NewServer()
 	healthpb.RegisterHealthServer(s, healthcheck)
-	pb.RegisterEchoServer(s, &echoServer{})
+	echo.RegisterEchoServer(s, &echoServer{})
 
 	go func() {
 		// asynchronously inspect dependencies and toggle serving status as needed

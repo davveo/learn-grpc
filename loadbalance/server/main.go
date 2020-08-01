@@ -7,7 +7,7 @@ import (
 	"net"
 	"sync"
 
-	echo "github.com/davveo/learn-grpc/pb"
+	"github.com/davveo/learn-grpc/proto/echo"
 
 	"google.golang.org/grpc"
 )
