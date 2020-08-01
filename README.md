@@ -19,3 +19,4 @@
 > https://www.aqniu.com/tools-tech/30315.html
 ### 6. keepalive
 ### 7. interceptor 拦截器
+### 8. loadbalance 负载均衡
